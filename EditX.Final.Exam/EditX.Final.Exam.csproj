@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<RootNamespace>EditX.Final.Exam</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="EditX.Final.Exam.Tests" />
+		<InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Resources\Patients.json" />
+		<None Remove="Resources\warehouseLayout.json" />
+		<None Include="C:\Users\AleixH\Source\Repos\EditX.Final.Exam\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Resources\Patients.json" />
+		<EmbeddedResource Include="Resources\warehouseLayout_highest.json" />
+		<EmbeddedResource Include="Resources\warehouseLayout.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EditorConfigFiles Remove="C:\Users\AleixH\Source\Repos\EditX.Final.Exam\.editorconfig" />
+	</ItemGroup>
+
+</Project>

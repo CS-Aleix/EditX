@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Output\Test2Output1.txt" />
+    <None Remove="Output\Test2Output2.txt" />
+    <None Remove="Output\Test2Output3.txt" />
+    <None Remove="Output\warehouse1Output.json" />
+    <None Remove="Output\warehouse2Output.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Output\Test1Output2bis.txt" />
+    <EmbeddedResource Include="Output\Test1Output3.txt" />
+    <EmbeddedResource Include="Output\Test1Output1.txt" />
+    <EmbeddedResource Include="Output\Test1Output2.txt" />
+    <EmbeddedResource Include="Output\Test2Output1.txt" />
+    <EmbeddedResource Include="Output\Test2Output2.txt" />
+    <EmbeddedResource Include="Output\Test2Output3.txt" />
+    <EmbeddedResource Include="Output\warehouse1Output.json" />
+    <EmbeddedResource Include="Output\warehouse3Output.json" />
+    <EmbeddedResource Include="Output\warehouse2Output.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="MSTest" Version="3.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EditX.Final.Exam\EditX.Final.Exam.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+  </ItemGroup>
+
+</Project>

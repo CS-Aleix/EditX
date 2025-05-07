@@ -1,0 +1,48 @@
+[
+  {
+    "$type": "Destination",
+    "Location": {
+      "IsEmpty": false,
+      "X": 5,
+      "Y": 0
+    }
+  },
+  {
+    "$type": "Destination",
+    "Location": {
+      "IsEmpty": false,
+      "X": 5,
+      "Y": 10
+    }
+  },
+  {
+    "$type": "Location",
+    "HeldItem": {
+      "$type": "Medication",
+      "SerialNumber": "ABC",
+      "Name": "TestMed",
+      "Description": "ExampleMedication"
+    },
+    "Amount": 1,
+    "Location": {
+      "IsEmpty": false,
+      "X": 5,
+      "Y": 4
+    }
+  },
+  {
+    "$type": "Location",
+    "HeldItem": {
+      "$type": "Medication",
+      "SerialNumber": "ABC",
+      "Name": "TestMed",
+      "Description": "ExampleMedication"
+    },
+    "Amount": 3,
+    "Location": {
+      "IsEmpty": false,
+      "X": 5,
+      "Y": 6
+    }
+  }
+]
