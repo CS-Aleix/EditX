@@ -1,5 +1,6 @@
-# EditX
-Welcome to the ChipSoft coding challenge!
+# EditX - C# Coding Challenge
+
+### Welcome to the ChipSoft coding challenge!
 
 The purpose of this challenge is to put your skills on display!
 All the necessary data to complete this test (and the following ones) can be found in this solution.
@@ -16,3 +17,10 @@ Important note: THE TESTS THEMSELVES ARE NOT TO BE TOUCHED.
 All other code is merely suggestive and is free to be changed as you see fit.
 
 Show us your programming skills by completing the code to make all the tests work!
+
+---
+
+### What to do when you're finished?
+- Fill in the NameCard found in Test1.cs
+- Make a Pull Request on the Github repository (https://github.com/CS-Aleix/EditX) with your working code.
+

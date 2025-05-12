@@ -1,15 +1,18 @@
 ﻿using EditX.Final.Exam.Enums;
 using EditX.Final.Exam.Interfaces.Warehouse;
+using EditX.Final.Exam.Models;
+using EditX.Final.Exam.Models.Warehouse;
 
-namespace EditX.Final.Exam.Models.Warehouse;
+namespace EditX.Final.Exam.Services.Warehouse;
 
-internal class Warehouse(IInventoryImporter inventoryImporter) : IWarehouse
+internal class WarehouseService(IInventoryImporter inventoryImporter) : IWarehouseService
 {
     public List<WarehouseNode> Inventory { get; set; } = [];
 
-    public void Import(string resourceName)
+    public async Task Import(string resourceName)
     {
-        var result = inventoryImporter.Import(resourceName).Result;
+        var result = await inventoryImporter.Import(resourceName);
+        // ??        
     }
 
     public string Export()

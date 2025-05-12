@@ -7,7 +7,7 @@ internal class PatientService : IPatientService
     public PatientService()
     { }
         
-    internal void ImportData()
+    internal async Task ImportData()
     {
         //Import the embedded resource Patients.json
     }

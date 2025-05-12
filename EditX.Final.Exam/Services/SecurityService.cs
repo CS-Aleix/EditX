@@ -15,7 +15,7 @@ internal class SecurityService : ISecurityService
         return null;
     }
 
-    public string? Encrypt(string input, Enums.EncryptionAlgorithms algorithm)
+    public string Encrypt(string input, Enums.EncryptionAlgorithms algorithm)
     {
         string securityKey = "iL0veS3cretz";
 

@@ -2,6 +2,12 @@
 
 namespace EditX.Final.Exam.Tests;
 
+/// NameCard - Please fill in the following data
+/// Name (First name + Last name): 
+/// City: 
+/// Contact information (your preferred way to contact you): 
+
+
 /// <summary>
 /// Welcome to the ChipSoft coding challenge!
 /// 
@@ -25,11 +31,11 @@ namespace EditX.Final.Exam.Tests;
 public sealed class Test1
 {
     [TestMethod]
-    public void PrintAll_ShouldPrintAllPatients_WhenJSONRead()
+    public async Task PrintAll_ShouldPrintAllPatients_WhenJSONRead()
     {
         //Arrange
         PatientService _sut = new();
-        _sut.ImportData();
+        await _sut.ImportData();
 
         //Act
         string patientsString = _sut.PrintAll();
@@ -55,11 +61,11 @@ public sealed class Test1
     }
 
     [TestMethod]
-    public void PrintX_ShouldPrintXPatientsAfterSkippingY_WhenProvidedWithValues()
+    public async Task PrintX_ShouldPrintXPatientsAfterSkippingY_WhenProvidedWithValues()
     {
         //Arrange
         PatientService _sut = new();
-        _sut.ImportData();
+        await _sut.ImportData();
 
         //Act
         string patientsString = _sut.PrintXWithSkip(3, 2);
@@ -70,7 +76,7 @@ public sealed class Test1
     }
 
     [TestMethod]
-    public void PrintPatients_ShouldPrintAccordingToPredicate_WhenProvidedAValidPredicate()
+    public async Task PrintPatients_ShouldPrintAccordingToPredicate_WhenProvidedAValidPredicate()
     {
         //Arrange
         PatientService _sut = new();

@@ -10,12 +10,12 @@ public class Test2
     [DataRow("674.88.91.233", "442.16.53.727", "Test2Output1.txt")]
     [DataRow("345.67.89.012", "1234567890", "Test2Output2.txt")]
     [DataRow("567$89$01$234", "456.78.90.123", "Test2Output3.txt")]
-    public void SwapPatients_ChangesLocations_WhenGiven2Patients(string patientnr1, string patientnr2, string outputPath)
+    public async Task SwapPatients_ChangesLocations_WhenGiven2Patients(string patientnr1, string patientnr2, string outputPath)
     {
         //Arrange
         LocationService _sut = new();
         PatientService patientService = new();
-        patientService.ImportData();
+        await patientService.ImportData();
         IPatient patient1 = patientService.GetPatientBySocialSecurityNumber(patientnr1);
         IPatient patient2 = patientService.GetPatientBySocialSecurityNumber(patientnr2);
 

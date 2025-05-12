@@ -3,11 +3,11 @@ using EditX.Final.Exam.Models;
 
 namespace EditX.Final.Exam.Interfaces.Warehouse;
 
-internal interface IWarehouse
+internal interface IWarehouseService
 {
     void ProcessOrder(SingleMedicationOrder order, PickingAlgorithms algorithm);
 
-    void Import(string resourceName);
+    Task Import(string resourceName);
 
     string Export();
 }

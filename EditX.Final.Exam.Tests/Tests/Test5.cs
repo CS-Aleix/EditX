@@ -28,7 +28,7 @@ public class Test5
         //The BASIC encryption only contains steps 1, 2 & 5.
 
         //Arrange
-        ISecurityService _sut = new SecurityService();
+        SecurityService _sut = new SecurityService();
 
         //Act
         string encryptedText = _sut.Encrypt(input, algorithm);
@@ -45,7 +45,7 @@ public class Test5
         //The INTERMEDIATE encryption only contains steps 1, 2, 3 & 5.
 
         //Arrange
-        ISecurityService _sut = new SecurityService();
+        SecurityService _sut = new SecurityService();
 
         //Act
         string encryptedText = _sut.Encrypt(input, algorithm);
@@ -62,7 +62,7 @@ public class Test5
         //The FULL encryption contains ALL the steps; 1, 2, 3, 4 & 5.
 
         //Arrange
-        ISecurityService _sut = new SecurityService();
+        SecurityService _sut = new SecurityService();
 
         //Act
         string encryptedText = _sut.Encrypt(input, algorithm);

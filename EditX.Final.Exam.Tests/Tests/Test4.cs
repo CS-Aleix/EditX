@@ -1,6 +1,7 @@
 using EditX.Final.Exam.Enums;
 using EditX.Final.Exam.Models;
 using EditX.Final.Exam.Models.Warehouse;
+using EditX.Final.Exam.Services.Warehouse;
 
 namespace EditX.Final.Exam.Tests;
 
@@ -25,12 +26,12 @@ public class Test4
 
     [DataTestMethod]
     [DynamicData(nameof(AdditionData))]
-    public void ProcessOrder_TakesFromCorrectLocation_WhenGivenAnOrder(string sourceFileName, SingleMedicationOrder order, string outputFilename, PickingAlgorithms algorithm)
+    public async Task ProcessOrder_TakesFromCorrectLocation_WhenGivenAnOrder(string sourceFileName, SingleMedicationOrder order, string outputFilename, PickingAlgorithms algorithm)
     {
         //Arrange
         InventoryImporterJSON importer = new();
-        Warehouse _sut = new(importer);
-        _sut.Import(sourceFileName);
+        WarehouseService _sut = new(importer);
+        await _sut.Import(sourceFileName);
 
         //Act
         _sut.ProcessOrder(order, algorithm);
