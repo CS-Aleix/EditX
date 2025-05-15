@@ -30,7 +30,6 @@ internal class WarehouseService(IInventoryImporter inventoryImporter) : IWarehou
                 break;
             case PickingAlgorithms.HighestStock:
                     location = Inventory.OfType<WarehouseLocation>().Where(c => c.HeldItem.SerialNumber == order.Item.SerialNumber).MaxBy(c=> c.Amount);
-             
                 break;
         }
         location.Amount -= order.Amount;

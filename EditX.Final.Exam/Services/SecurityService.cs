@@ -36,9 +36,6 @@ internal class SecurityService : ISecurityService
                 string interleaveRevers = InterleaveWithRevers(fullXor);
                 return Base64Encode(interleaveRevers);
         }
-
-
-
         return string.Empty;
     }
 
@@ -100,7 +97,6 @@ internal class SecurityService : ISecurityService
         ///     a. I1S1I2S2I3S3..IXSX (last letter of result is always from security key)
         ///     b. restart from beginning of security key if word to encrypt is longer
 
-        int currentSecurityKeyIndex = 0;
         List<char> chars = new();
         for (int i = 0; i < input.Length; i++)
         {
