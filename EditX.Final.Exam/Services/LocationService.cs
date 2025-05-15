@@ -10,11 +10,13 @@ internal class LocationService
 
     internal static void SwapPatients(IPatient patient1, IPatient patient2)
     {
-        throw new NotImplementedException();
+        var tmp = patient1.Location;
+        patient1.Location = patient2.Location;
+        patient2.Location = tmp;
     }
 
     internal static string PrintPatientLocations(IPatient patient1, IPatient patient2)
     {
-        throw new NotImplementedException();
+        return $"{patient1.Describe()} AND {patient2.Describe()}";
     }
 }
