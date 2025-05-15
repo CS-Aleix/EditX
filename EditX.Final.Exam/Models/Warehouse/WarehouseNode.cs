@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace EditX.Final.Exam.Models.Warehouse;
 
+[JsonPolymorphic()]
 [JsonDerivedType(typeof(WarehouseDestination), typeDiscriminator: "Destination")]
 [JsonDerivedType(typeof(WarehouseLocation), typeDiscriminator: "Location")]
 public abstract class WarehouseNode : IWarehouseNode
