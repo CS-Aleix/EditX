@@ -1,39 +1,57 @@
 ﻿using EditX.Final.Exam.Interfaces;
+using System.Reflection;
+using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace EditX.Final.Exam.Services;
+
 internal class PatientService : IPatientService
 {
     private List<IPatient> _patients = [];
     public PatientService()
     { }
-        
+
     internal async Task ImportData()
     {
-        //Import the embedded resource Patients.json
+        var patiensEnumerable = await Utilities.ReadPatientsFromJSON("Patients.json");
+        _patients = patiensEnumerable?.Cast<IPatient>().ToList() ?? new List<IPatient>();
     }
+
+    //define a propoerty selector to use in print functuions
+    internal Func<IPatient, string> printProperty = p => p.LastName;
 
     internal string PrintAll()
     {
-        throw new NotImplementedException();
+        return string.Join("-", _patients.Select(p => p.LastName));
     }
 
     internal string PrintX(int amount)
     {
-        throw new NotImplementedException();
+        return string.Join("-", _patients.Take(amount).Select(printProperty));
     }
 
     internal string PrintXWithSkip(int amount, int skip)
     {
-        throw new NotImplementedException();
+        return string.Join("-", _patients.Skip(skip).Take(amount).Select(printProperty));
     }
 
-    internal string PrintPatients(Func<IPatient, bool> value)
+    internal string PrintPatients(Func<IPatient, bool> predicate)
     {
-        throw new NotImplementedException();
+        if (predicate == null)
+        {
+            throw new ArgumentNullException(nameof(predicate), "Predicate cannot be null");
+        }
+        return string.Join("-", _patients.Where(predicate).Select(printProperty));
     }
 
-    internal IPatient GetPatientBySocialSecurityNumber(string patientnr1)
+
+    public IPatient? GetPatientBySocialSecurityNumber(string ssn)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrWhiteSpace(ssn))
+        {
+            throw new ArgumentNullException(nameof(ssn), "Social Security Number cannot be null or empty");
+        }
+        var regex = new Regex(@"[^\d]");
+        return _patients.FirstOrDefault(p => regex.Replace(p.SocialSecurityNumber, "").Equals(regex.Replace(ssn, "")));
     }
 }
