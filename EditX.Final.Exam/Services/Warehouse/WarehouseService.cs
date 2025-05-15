@@ -2,6 +2,7 @@
 using EditX.Final.Exam.Interfaces.Warehouse;
 using EditX.Final.Exam.Models;
 using EditX.Final.Exam.Models.Warehouse;
+using System.Reflection.Metadata.Ecma335;
 
 namespace EditX.Final.Exam.Services.Warehouse;
 
@@ -11,8 +12,7 @@ internal class WarehouseService(IInventoryImporter inventoryImporter) : IWarehou
 
     public async Task Import(string resourceName)
     {
-        var result = await inventoryImporter.Import(resourceName);
-        // ??        
+        Inventory = (await inventoryImporter.Import(resourceName)).ToList();
     }
 
     public string Export()
@@ -22,6 +22,16 @@ internal class WarehouseService(IInventoryImporter inventoryImporter) : IWarehou
 
     public void ProcessOrder(SingleMedicationOrder order, PickingAlgorithms algorithm)
     {
-        throw new NotImplementedException();
+        WarehouseLocation location = null;
+        switch (algorithm)
+        {
+            case PickingAlgorithms.ClosestDistance:
+                location = Inventory.OfType<WarehouseLocation>().Where(c => c.HeldItem.SerialNumber == order.Item.SerialNumber).MinBy(c => Math.Abs(c.Location.X - order.Destination.Location.X) + Math.Abs(c.Location.Y - order.Destination.Location.Y));
+                break;
+            case PickingAlgorithms.HighestStock:
+                    location = Inventory.OfType<WarehouseLocation>().Where(c => c.HeldItem.SerialNumber == order.Item.SerialNumber).MaxBy(c=> c.Amount);
+                break;
+        }
+        location.Amount -= order.Amount;
     }
 }

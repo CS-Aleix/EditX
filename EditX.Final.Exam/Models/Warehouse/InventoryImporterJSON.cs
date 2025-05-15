@@ -4,13 +4,13 @@ namespace EditX.Final.Exam.Models.Warehouse;
 
 internal class InventoryImporterJSON : IInventoryImporter
 {
-    public async Task<object> Import(string resourceName)
+    public async Task<IEnumerable<WarehouseNode>> Import(string resourceName)
     {
-        return Utilities.ReadWarehouseInventoryFromJSON(resourceName);
+        return await Utilities.ReadWarehouseInventoryFromJSON(resourceName);
     }
 
-    public string Export(object list)
+    public string Export(IEnumerable<WarehouseNode> list)
     {
-        return string.Empty; //Something is missing here
+        return Utilities.ConvertWarehouseInventoryToJSON(list.ToList()); //Something is missing here
     }
 }
