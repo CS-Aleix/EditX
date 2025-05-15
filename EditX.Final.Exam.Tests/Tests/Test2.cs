@@ -22,6 +22,7 @@ public class Test2
         //Act
         LocationService.SwapPatients(patient1, patient2);
         string locationsString = LocationService.PrintPatientLocations(patient1, patient2).Trim();
+        Console.WriteLine(locationsString);
 
         //Assert
         string expectedOutput = Utilities.ReadResourceContentToString(filename: outputPath).Trim();
