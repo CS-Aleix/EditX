@@ -3,10 +3,7 @@
 namespace EditX.Final.Exam.Tests;
 
 /// NameCard - Please fill in the following data
-/// Name (First name + Last name): 
-/// City: 
-/// Contact information (your preferred way to contact you): 
-
+/// Name: 
 
 /// <summary>
 /// Welcome to the ChipSoft coding challenge!
@@ -46,11 +43,11 @@ public sealed class Test1
     }
 
     [TestMethod]
-    public void PrintX_ShouldPrintTheFirstXPatients_WhenProvidedAnAmount()
+    public async Task PrintX_ShouldPrintTheFirstXPatients_WhenProvidedAnAmount()
     {
         //Arrange
         PatientService _sut = new();
-        _sut.ImportData();
+        await _sut.ImportData();
 
         //Act
         string patientsString = _sut.PrintX(3);
@@ -80,7 +77,7 @@ public sealed class Test1
     {
         //Arrange
         PatientService _sut = new();
-        _sut.ImportData();
+        await _sut.ImportData();
 
         //Act
         string patientsString = _sut.PrintPatients(p => p.City.Equals("Liverpool"));
