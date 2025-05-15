@@ -15,7 +15,7 @@ namespace EditX.Final.Exam
             return assembly.GetManifestResourceStream(resourceName);
         }
 
-        internal static async Task<IEnumerable<object>?> ReadPatientsFromJSON(string filename)
+        internal static async Task<IEnumerable<T>?> ReadPatientsFromJSON<T>(string filename)
         {
             Stream inputJSON = ReadResourceContentToStream(filename);
 
@@ -24,10 +24,10 @@ namespace EditX.Final.Exam
                 PropertyNameCaseInsensitive = true
             };
 
-            return await JsonSerializer.DeserializeAsync<IEnumerable<object>>(inputJSON, options);
+            return await JsonSerializer.DeserializeAsync<IEnumerable<T>>(inputJSON, options);
         }
 
-        internal static async Task<object> ReadWarehouseInventoryFromJSON(string filename)
+        internal static async Task<List<WarehouseNode>> ReadWarehouseInventoryFromJSON(string filename)
         {
             Stream inputJSON = ReadResourceContentToStream(filename);
 
@@ -36,7 +36,7 @@ namespace EditX.Final.Exam
                 WriteIndented = true,
             };
 
-            return await JsonSerializer.DeserializeAsync<object>(inputJSON, options);
+            return await JsonSerializer.DeserializeAsync<List<WarehouseNode>>(inputJSON, options);
         }
 
         internal static string ConvertWarehouseInventoryToJSON(List<WarehouseNode> list)

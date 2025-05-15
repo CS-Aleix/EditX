@@ -1,16 +1,17 @@
 ﻿using EditX.Final.Exam.Interfaces.Warehouse;
+using System.Text.Json;
 
 namespace EditX.Final.Exam.Models.Warehouse;
 
 internal class InventoryImporterJSON : IInventoryImporter
 {
-    public async Task<object> Import(string resourceName)
+    public async Task<List<WarehouseNode>> Import(string resourceName)
     {
-        return Utilities.ReadWarehouseInventoryFromJSON(resourceName);
+        return await Utilities.ReadWarehouseInventoryFromJSON(resourceName);
     }
 
-    public string Export(object list)
+    public string Export(List<WarehouseNode> list)
     {
-        return string.Empty; //Something is missing here
+        return Utilities.ConvertWarehouseInventoryToJSON(list);
     }
 }
