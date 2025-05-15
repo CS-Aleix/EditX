@@ -51,5 +51,10 @@ namespace EditX.Final.Exam
 
             return jsonString;
         }
+
+        internal static string KeepOnlyDigits(string input)
+        {
+            return new string(input.Where(char.IsDigit).ToArray());
+        }
     }
 }

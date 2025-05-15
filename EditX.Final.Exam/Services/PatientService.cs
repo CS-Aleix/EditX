@@ -15,7 +15,7 @@ internal class PatientService : IPatientService
     {
         //Import the embedded resource Patients.json
         _patients = await Utilities.ReadPatientsFromJSON("Patients.json") ?? throw new ArgumentException("Impossible to import data.");
-        _patients.ForEach(p => p.SocialSecurityNumber = p.SocialSecurityNumber.Replace(SOCIAL_SECURITY_NUMBER_SEPARATOR, string.Empty));
+        _patients.ForEach(p => p.SocialSecurityNumber = Utilities.KeepOnlyDigits(p.SocialSecurityNumber));
         _patientLastNames = _patients.Select(p => p.LastName);
     }
 
@@ -41,6 +41,7 @@ internal class PatientService : IPatientService
 
     internal IPatient? GetPatientBySocialSecurityNumber(string patientnr1)
     {
-        return _patients.SingleOrDefault(_patients => _patients.SocialSecurityNumber.Equals(patientnr1));
+        string socialSecurityNumber = Utilities.KeepOnlyDigits(patientnr1);
+        return _patients.SingleOrDefault(_patients => _patients.SocialSecurityNumber.Equals(socialSecurityNumber));
     }
 }
