@@ -17,7 +17,7 @@ namespace EditX.Final.Exam.Tests
 
         internal static string ReadResourceContentToString(string filename)
         {
-            return string.Empty; //Something is missing here
+            return File.ReadAllText($"../../../Output/{filename}");
         }
     }
 }
