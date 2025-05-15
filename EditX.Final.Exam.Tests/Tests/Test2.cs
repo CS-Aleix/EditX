@@ -12,12 +12,15 @@ public class Test2
     [DataRow("567$89$01$234", "456.78.90.123", "Test2Output3.txt")]
     public async Task SwapPatients_ChangesLocations_WhenGiven2Patients(string patientnr1, string patientnr2, string outputPath)
     {
+        // Eric Clapton is located @Ward2/204/5 AND Elvis Presley is located @Ward1/100/1
+        // John Lennon is located @Ward3/305/1 AND Freddie Mercury is located @Ward4/401/2 
+        // George Harrison is located @Ward3/306/4 AND Paul McCartney needs to be assigned a location in Ward7
         //Arrange
         LocationService _sut = new();
         PatientService patientService = new();
         await patientService.ImportData();
-        IPatient patient1 = patientService.GetPatientBySocialSecurityNumber(patientnr1);
-        IPatient patient2 = patientService.GetPatientBySocialSecurityNumber(patientnr2);
+        Patient patient1 = patientService.GetPatientBySocialSecurityNumber(patientnr1);
+        Patient patient2 = patientService.GetPatientBySocialSecurityNumber(patientnr2);
 
         //Act
         LocationService.SwapPatients(patient1, patient2);

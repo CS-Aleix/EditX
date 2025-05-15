@@ -4,6 +4,6 @@ namespace EditX.Final.Exam.Interfaces.Warehouse;
 
 internal interface IInventoryImporter
 {
-    Task<object> Import(string resourceName);
+    Task<List<WarehouseNode>> Import(string resourceName);
     string Export(object list);
 }

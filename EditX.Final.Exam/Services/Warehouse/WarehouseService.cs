@@ -12,6 +12,7 @@ internal class WarehouseService(IInventoryImporter inventoryImporter) : IWarehou
     public async Task Import(string resourceName)
     {
         var result = await inventoryImporter.Import(resourceName);
+        Inventory = result;
         // ??        
     }
 
@@ -22,6 +23,26 @@ internal class WarehouseService(IInventoryImporter inventoryImporter) : IWarehou
 
     public void ProcessOrder(SingleMedicationOrder order, PickingAlgorithms algorithm)
     {
-        throw new NotImplementedException();
+        switch (algorithm)
+        {
+            case PickingAlgorithms.ClosestDistance:
+                Inventory.Sort((a, b) =>
+                {
+                    var aXDist = Math.Abs(a.Location.X - order.Destination.Location.X);
+                    var aYDist = Math.Abs(a.Location.Y - order.Destination.Location.Y);
+                    var bXDist = Math.Abs(b.Location.X - order.Destination.Location.X);
+                    var bYDist = Math.Abs(b.Location.Y - order.Destination.Location.Y);
+                    return (aXDist * aYDist) - (bXDist * bYDist);
+                });
+                break;
+            case PickingAlgorithms.FirstInFirstOut:
+
+                break;
+            case PickingAlgorithms.HighestStock:
+                throw new NotImplementedException();
+                break;
+            default:
+                throw new Exception("Not supported");
+        }
     }
 }
