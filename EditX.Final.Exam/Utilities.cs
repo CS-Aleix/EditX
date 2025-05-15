@@ -1,5 +1,6 @@
 ﻿using EditX.Final.Exam.Models;
 using EditX.Final.Exam.Models.Warehouse;
+using System.Drawing;
 using System.Reflection;
 using System.Text.Json;
 
@@ -28,7 +29,7 @@ namespace EditX.Final.Exam
             return await JsonSerializer.DeserializeAsync<List<Patient>>(inputJSON, options);
         }
 
-        internal static async Task<object> ReadWarehouseInventoryFromJSON(string filename)
+        internal static async Task<List<WarehouseNode>> ReadWarehouseInventoryFromJSON(string filename)
         {
             Stream inputJSON = ReadResourceContentToStream(filename);
 
@@ -37,7 +38,7 @@ namespace EditX.Final.Exam
                 WriteIndented = true,
             };
 
-            return await JsonSerializer.DeserializeAsync<object>(inputJSON, options);
+            return await JsonSerializer.DeserializeAsync<List<WarehouseNode>>(inputJSON, options);
         }
 
         internal static string ConvertWarehouseInventoryToJSON(List<WarehouseNode> list)
@@ -55,6 +56,11 @@ namespace EditX.Final.Exam
         internal static string KeepOnlyDigits(string input)
         {
             return new string(input.Where(char.IsDigit).ToArray());
+        }
+
+        internal static double GetDistance(Point p1, Point p2)
+        {
+            return Math.Round(Math.Sqrt(Math.Pow((p2.X - p1.X), 2) + Math.Pow((p2.Y - p1.Y), 2)), 1);
         }
     }
 }
