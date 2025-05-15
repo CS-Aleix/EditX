@@ -10,14 +10,32 @@ namespace EditX.Final.Exam.Tests
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = $"EditX.Final.Exam.Tests.Output.{filename}";
-            string expectedOutput = string.Empty;                 
+            string expectedOutput = string.Empty;
 
             return assembly.GetManifestResourceStream(resourceName);
         }
 
         internal static string ReadResourceContentToString(string filename)
         {
-            return string.Empty; //Something is missing here
+            string pathBase = GetResourcesPath(filename);
+
+            return File.ReadAllText(pathBase);
         }
+
+        internal static string GetResourcesPath(string? subPath = null)
+        {
+            var exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            var basePath = Path.GetFullPath($"{exeDir}//Output");
+
+            if (!string.IsNullOrWhiteSpace(subPath))
+            {
+                basePath = Path.Combine(basePath, subPath);
+            }
+
+            return basePath;
+        }
+
+
     }
 }

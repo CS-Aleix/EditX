@@ -3,7 +3,7 @@
 namespace EditX.Final.Exam.Tests;
 
 /// NameCard - Please fill in the following data
-/// Name: 
+/// Name: Luca De Camillis
 
 /// <summary>
 /// Welcome to the ChipSoft coding challenge!

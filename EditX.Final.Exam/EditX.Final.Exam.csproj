@@ -14,15 +14,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="Resources\Patients.json" />
-		<None Remove="Resources\warehouseLayout.json" />
-		<None Include="C:\Users\AleixH\Source\Repos\EditX.Final.Exam\.editorconfig" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<EmbeddedResource Include="Resources\Patients.json" />
-		<EmbeddedResource Include="Resources\warehouseLayout_highest.json" />
-		<EmbeddedResource Include="Resources\warehouseLayout.json" />
+<None Update="Resources\Patients.json" CopyToOutputDirectory="PreserveNewest"/>
+<None Update="Resources\warehouseLayout_highest.json" CopyToOutputDirectory="PreserveNewest"/>
+<None Update="Resources\warehouseLayout.json" CopyToOutputDirectory="PreserveNewest"/>
 	</ItemGroup>
 
 	<ItemGroup>
