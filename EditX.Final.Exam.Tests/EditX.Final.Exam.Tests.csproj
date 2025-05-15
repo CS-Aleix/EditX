@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -16,16 +16,36 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Output\Test1Output2bis.txt" />
-    <EmbeddedResource Include="Output\Test1Output3.txt" />
-    <EmbeddedResource Include="Output\Test1Output1.txt" />
-    <EmbeddedResource Include="Output\Test1Output2.txt" />
-    <EmbeddedResource Include="Output\Test2Output1.txt" />
-    <EmbeddedResource Include="Output\Test2Output2.txt" />
-    <EmbeddedResource Include="Output\Test2Output3.txt" />
-    <EmbeddedResource Include="Output\warehouse1Output.json" />
-    <EmbeddedResource Include="Output\warehouse3Output.json" />
-    <EmbeddedResource Include="Output\warehouse2Output.json" />
+    <EmbeddedResource Include="Output\Test1Output2bis.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output\Test1Output3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output\Test1Output1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output\Test1Output2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output\Test2Output1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output\Test2Output2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output\Test2Output3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output\warehouse1Output.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output\warehouse3Output.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output\warehouse2Output.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

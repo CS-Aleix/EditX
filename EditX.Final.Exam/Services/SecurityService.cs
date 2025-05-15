@@ -1,5 +1,4 @@
 ﻿using EditX.Final.Exam.Interfaces;
-using System.Buffers.Text;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -10,9 +9,11 @@ internal class SecurityService : ISecurityService
     public SecurityService()
     { }
 
-    public byte[] GetSHA512HashForPatient(IPatient patient)
+    public byte[] GetSHA512HashForPatient(Patient patient)
     {
-        return null;
+        return SHA512
+            .Create()
+            .ComputeHash(Encoding.UTF8.GetBytes(patient.SocialSecurityNumber));
     }
 
     public string Encrypt(string input, Enums.EncryptionAlgorithms algorithm)

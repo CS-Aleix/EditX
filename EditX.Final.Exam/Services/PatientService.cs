@@ -1,39 +1,56 @@
 ﻿using EditX.Final.Exam.Interfaces;
+using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace EditX.Final.Exam.Services;
 internal class PatientService : IPatientService
 {
-    private List<IPatient> _patients = [];
+    private List<Patient> _patients = [];
     public PatientService()
     { }
         
     internal async Task ImportData()
     {
         //Import the embedded resource Patients.json
+        var content = await File.ReadAllTextAsync("./Resources/Patients.json");
+        var data = JsonSerializer.Deserialize<List<Patient>>(content, new JsonSerializerOptions()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        })!;
+        _patients = data.ToList();
     }
 
     internal string PrintAll()
     {
-        throw new NotImplementedException();
+        var lastNames = _patients.Select(x => x.LastName).ToList();
+        return string.Join("-", lastNames);
     }
 
     internal string PrintX(int amount)
     {
-        throw new NotImplementedException();
+        var lastNames = _patients.Take(amount).Select(x => x.LastName).ToList();
+        return string.Join("-", lastNames);
     }
 
     internal string PrintXWithSkip(int amount, int skip)
     {
-        throw new NotImplementedException();
+        var lastNames = _patients.Skip(skip).Take(amount).Select(x => x.LastName).ToList();
+        return string.Join("-", lastNames);
     }
 
-    internal string PrintPatients(Func<IPatient, bool> value)
+    internal string PrintPatients(Func<Patient, bool> value)
     {
-        throw new NotImplementedException();
+        
+        var lastNames = _patients.Where(value).Select(x => x.LastName).ToList();
+        return string.Join("-", lastNames);
     }
 
-    internal IPatient GetPatientBySocialSecurityNumber(string patientnr1)
+    internal Patient GetPatientBySocialSecurityNumber(string patientnr1)
     {
-        throw new NotImplementedException();
+        var pattern = $"[^0-9]";
+        var search = Regex.Replace(patientnr1, $"[^0-9]", "");
+        var found = _patients.FirstOrDefault(x => Regex.Replace(x.SocialSecurityNumber, $"[^0-9]", "") == search);
+        if (found is null) throw new Exception("NOT FOUND");
+        return found;
     }
 }

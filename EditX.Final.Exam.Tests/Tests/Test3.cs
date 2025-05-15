@@ -18,7 +18,7 @@ public class Test3
         //Arrange
         SecurityService _sut = new SecurityService();
 
-        var patientMock = new Mock<IPatient>();
+        var patientMock = new Mock<Patient>();
         patientMock.Setup(m => m.SocialSecurityNumber).Returns(socialSecurityNumber);
 
         //Act
