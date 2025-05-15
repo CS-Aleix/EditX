@@ -1,5 +1,6 @@
 ﻿namespace EditX.Final.Exam.Interfaces;
 
-public interface IPatientService
+internal interface IPatientService
 {
+    internal IPatient? GetPatientBySocialSecurityNumber(string ssn);
 }

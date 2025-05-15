@@ -1,4 +1,5 @@
-﻿using EditX.Final.Exam.Models.Warehouse;
+﻿using EditX.Final.Exam.Interfaces;
+using EditX.Final.Exam.Models.Warehouse;
 using System.Reflection;
 using System.Text.Json;
 
@@ -10,12 +11,12 @@ namespace EditX.Final.Exam
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = $"EditX.Final.Exam.Resources.{filename}";
-            string expectedOutput = string.Empty;                 
+            string expectedOutput = string.Empty;
 
             return assembly.GetManifestResourceStream(resourceName);
         }
 
-        internal static async Task<IEnumerable<object>?> ReadPatientsFromJSON(string filename)
+        internal static async Task<IEnumerable<Patient>?> ReadPatientsFromJSON(string filename)
         {
             Stream inputJSON = ReadResourceContentToStream(filename);
 
@@ -24,7 +25,7 @@ namespace EditX.Final.Exam
                 PropertyNameCaseInsensitive = true
             };
 
-            return await JsonSerializer.DeserializeAsync<IEnumerable<object>>(inputJSON, options);
+            return await JsonSerializer.DeserializeAsync<IEnumerable<Patient>>(inputJSON, options);
         }
 
         internal static async Task<object> ReadWarehouseInventoryFromJSON(string filename)

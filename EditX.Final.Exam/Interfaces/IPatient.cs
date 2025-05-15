@@ -11,3 +11,13 @@ internal interface IPatient
     string SocialSecurityNumber { get; set; }
     Location Location { get; set; }
 }
+
+class Patient : IPatient
+{
+    public DateOnly BirthDate { get; set; }
+    public string City { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string SocialSecurityNumber { get; set; }
+    public Location Location { get; set; }
+}
