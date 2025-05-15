@@ -11,8 +11,7 @@ internal class WarehouseService(IInventoryImporter inventoryImporter) : IWarehou
 
     public async Task Import(string resourceName)
     {
-        var result = await inventoryImporter.Import(resourceName);
-        // ??        
+        Inventory = await inventoryImporter.Import(resourceName);
     }
 
     public string Export()
@@ -22,6 +21,15 @@ internal class WarehouseService(IInventoryImporter inventoryImporter) : IWarehou
 
     public void ProcessOrder(SingleMedicationOrder order, PickingAlgorithms algorithm)
     {
-        throw new NotImplementedException();
+        // Check Inventory for order
+        foreach(var node in Inventory)
+        {
+            if (node is WarehouseLocation loc &&
+                loc.HeldItem.Name == order.Item.Name)
+            {
+                loc.Amount -= order.Amount;
+                return;
+            }
+        }
     }
 }

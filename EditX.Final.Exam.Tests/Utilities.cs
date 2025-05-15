@@ -17,7 +17,9 @@ namespace EditX.Final.Exam.Tests
 
         internal static string ReadResourceContentToString(string filename)
         {
-            return string.Empty; //Something is missing here
+            var assembly = Assembly.GetExecutingAssembly();
+            var filePath = Path.Combine("C:\\Users\\ceulejo\\source\\repos\\ChipSoft-CSharp-Challenge\\EditX.Final.Exam.Tests\\Output", filename);
+            return File.ReadAllText(filePath);
         }
     }
 }
