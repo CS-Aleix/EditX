@@ -2,7 +2,7 @@
 
 namespace EditX.Final.Exam.Interfaces;
 
-internal interface IPatient
+public interface IPatient
 {
     DateOnly BirthDate { get; set; }
     string City { get; set; }
