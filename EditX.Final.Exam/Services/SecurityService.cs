@@ -58,7 +58,7 @@ internal class SecurityService : ISecurityService
         //XOR every other byte with 111
         for (int i = 0; i < bytes.Length; i++)
         {
-            if (i % 2 == 0)
+            if ((i + 1) % 2 == 0)
             {
                 bytes[i] ^= 111;
             }
