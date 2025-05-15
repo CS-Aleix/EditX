@@ -10,6 +10,7 @@ internal class LocationService
 
     internal static void SwapPatients(IPatient patient1, IPatient patient2)
     {
+        //testje
         throw new NotImplementedException();
     }
 
