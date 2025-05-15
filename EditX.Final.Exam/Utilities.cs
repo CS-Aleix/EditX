@@ -1,4 +1,5 @@
-﻿using EditX.Final.Exam.Models.Warehouse;
+﻿using EditX.Final.Exam.Interfaces;
+using EditX.Final.Exam.Models.Warehouse;
 using System.Reflection;
 using System.Text.Json;
 
@@ -8,14 +9,12 @@ namespace EditX.Final.Exam
     {
         internal static Stream ReadResourceContentToStream(string filename)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = $"EditX.Final.Exam.Resources.{filename}";
-            string expectedOutput = string.Empty;                 
+            string pathBase = Exam.Utilities.GetResourcesPath(filename);
 
-            return assembly.GetManifestResourceStream(resourceName);
+            return new MemoryStream(File.ReadAllBytes(pathBase));
         }
 
-        internal static async Task<IEnumerable<object>?> ReadPatientsFromJSON(string filename)
+        internal static async Task<IEnumerable<IPatient>?> ReadPatientsFromJSON(string filename)
         {
             Stream inputJSON = ReadResourceContentToStream(filename);
 
@@ -24,7 +23,7 @@ namespace EditX.Final.Exam
                 PropertyNameCaseInsensitive = true
             };
 
-            return await JsonSerializer.DeserializeAsync<IEnumerable<object>>(inputJSON, options);
+            return await JsonSerializer.DeserializeAsync<IEnumerable<Patient>>(inputJSON, options);
         }
 
         internal static async Task<object> ReadWarehouseInventoryFromJSON(string filename)
@@ -50,5 +49,20 @@ namespace EditX.Final.Exam
 
             return jsonString;
         }
+
+        internal static string GetResourcesPath(string? subPath = null)
+        {
+            var exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            var basePath = Path.GetFullPath($"{exeDir}//Resources");
+
+            if (!string.IsNullOrWhiteSpace(subPath))
+            {
+                basePath = Path.Combine(basePath, subPath);
+            }
+
+            return basePath;
+        }
+
     }
 }

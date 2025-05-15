@@ -8,24 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Output\Test2Output1.txt" />
-    <None Remove="Output\Test2Output2.txt" />
-    <None Remove="Output\Test2Output3.txt" />
-    <None Remove="Output\warehouse1Output.json" />
-    <None Remove="Output\warehouse2Output.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Output\Test1Output2bis.txt" />
-    <EmbeddedResource Include="Output\Test1Output3.txt" />
-    <EmbeddedResource Include="Output\Test1Output1.txt" />
-    <EmbeddedResource Include="Output\Test1Output2.txt" />
-    <EmbeddedResource Include="Output\Test2Output1.txt" />
-    <EmbeddedResource Include="Output\Test2Output2.txt" />
-    <EmbeddedResource Include="Output\Test2Output3.txt" />
-    <EmbeddedResource Include="Output\warehouse1Output.json" />
-    <EmbeddedResource Include="Output\warehouse3Output.json" />
-    <EmbeddedResource Include="Output\warehouse2Output.json" />
+    <None Update="Output\Test1Output2bis.txt" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="Output\Test1Output3.txt" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="Output\Test1Output1.txt" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="Output\Test1Output2.txt" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="Output\Test2Output1.txt" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="Output\Test2Output2.txt" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="Output\Test2Output3.txt" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="Output\warehouse1Output.json" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="Output\warehouse3Output.json" CopyToOutputDirectory="PreserveNewest"/>
+    <None Update="Output\warehouse2Output.json" CopyToOutputDirectory="PreserveNewest"/>
   </ItemGroup>
 
   <ItemGroup>
