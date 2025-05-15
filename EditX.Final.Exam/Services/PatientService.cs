@@ -1,4 +1,5 @@
 ﻿using EditX.Final.Exam.Interfaces;
+using System.Text.Json;
 
 namespace EditX.Final.Exam.Services;
 internal class PatientService : IPatientService
@@ -10,30 +11,36 @@ internal class PatientService : IPatientService
     internal async Task ImportData()
     {
         //Import the embedded resource Patients.json
+        foreach (var patient in await Utilities.ReadPatientsFromJSON("Patients.json")) {
+            _patients.Add(patient);
+        }
     }
 
     internal string PrintAll()
     {
-        throw new NotImplementedException();
+        return PrintX(_patients.Count);
     }
 
     internal string PrintX(int amount)
     {
-        throw new NotImplementedException();
+        return PrintXWithSkip(amount, 0);
     }
 
     internal string PrintXWithSkip(int amount, int skip)
     {
-        throw new NotImplementedException();
+        String res = String.Join("-", _patients.Select(x => x.LastName).Skip(skip).Take(amount).ToArray());
+        return res;
     }
 
     internal string PrintPatients(Func<IPatient, bool> value)
     {
-        throw new NotImplementedException();
+        String res = String.Join("-", _patients.Where(x => value(x)).Select(x => x.LastName).ToArray());
+        return res;
     }
 
     internal IPatient GetPatientBySocialSecurityNumber(string patientnr1)
     {
-        throw new NotImplementedException();
+        var ssn = patientnr1.Replace("$", ".").Replace(".", "");
+        return _patients.Where(x => x.SocialSecurityNumber.Replace(".", "") == ssn).First();
     }
 }

@@ -10,4 +10,6 @@ internal interface IPatient
     string LastName { get; set; }
     string SocialSecurityNumber { get; set; }
     Location Location { get; set; }
+
+    public string Describe();
 }

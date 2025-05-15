@@ -6,7 +6,7 @@ namespace EditX.Final.Exam.Tests;
 
 [TestClass]
 public class Test5
-{ 
+{
     /// <summary>
     /// Time to implement an encryption algorithm!
     ///
