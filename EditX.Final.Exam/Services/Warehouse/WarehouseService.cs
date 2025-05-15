@@ -30,6 +30,9 @@ internal class WarehouseService(IInventoryImporter inventoryImporter) : IWarehou
             case PickingAlgorithms.HighestStock:
                 ProcessHighestStockOrder(order);
                 break;
+            case PickingAlgorithms.FirstInFirstOut:
+                throw new NotImplementedException("FIFO algorithm is not implemented yet.");
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(algorithm), algorithm, null);
         }
