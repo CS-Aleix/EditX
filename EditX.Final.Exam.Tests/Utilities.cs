@@ -1,4 +1,6 @@
-﻿using EditX.Final.Exam.Models.Warehouse;
+﻿using EditX.Final.Exam.Models;
+using EditX.Final.Exam.Models.Warehouse;
+using System.IO;
 using System.Reflection;
 using System.Text.Json;
 
@@ -17,7 +19,15 @@ namespace EditX.Final.Exam.Tests
 
         internal static string ReadResourceContentToString(string filename)
         {
-            return string.Empty; //Something is missing here
+            Stream inputJSON = ReadResourceContentToStream(filename);
+
+            string contents;
+            using (var sr = new StreamReader(inputJSON))
+            {
+                contents = sr.ReadToEnd();
+            }
+
+            return contents;
         }
     }
 }
